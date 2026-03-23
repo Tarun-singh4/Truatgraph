@@ -80,6 +80,42 @@ function App() {
       </div>
     );
   }
+  // ================= ANALYZE =================
+if (page === "analyze") {
+return (
+<div className="min-h-screen bg-gradient-to-br from-[#020617] to-black text-white px-10 py-10">
+
+  <button
+    onClick={() => setPage("home")}
+    className="text-blue-400 mb-6"
+  >
+    ← Back
+  </button>
+
+  <h1 className="text-4xl font-bold text-center mb-10">
+    AI Credit Analysis
+  </h1>
+
+  <div className="flex justify-center mb-12">
+    <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl flex gap-4 shadow-xl">
+
+      <input
+        className="p-3 rounded-lg text-black w-64"
+        placeholder="Enter GitHub Username"
+      />
+
+      <button
+        className="bg-gradient-to-r from-blue-500 to-purple-500 px-6 py-2 rounded-lg font-semibold"
+      >
+        Analyze
+      </button>
+
+    </div>
+  </div>
+
+</div>
+);
+}
 
   return <div>Coming soon...</div>;
 }
