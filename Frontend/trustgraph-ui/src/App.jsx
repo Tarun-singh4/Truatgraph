@@ -1,10 +1,64 @@
+
 import { useState } from "react";
-import heroImg from "./assets/hero.png"
+import heroImg from "./assets/hero.png";
+import { connectWallet, saveScore } from "./web3";
 
 function App() {
-  const [page, setPage] = useState("home");
 
-  if (page === "home") {
+const [page, setPage] = useState("home");
+const [username, setUsername] = useState("");
+const [score, setScore] = useState(null);
+const [profile, setProfile] = useState(null);
+const [loading, setLoading] = useState(false);
+
+const analyzeProfile = async () => {
+if (!username) return;
+
+try {
+  setLoading(true);
+
+  const res = await fetch('http://localhost:5000/analyze/${username}');
+
+  if (!res.ok) {
+    alert("User not found");
+    setLoading(false);
+    return;
+  }
+
+  const data = await res.json();
+
+  // SET SCORE
+  setScore(data.score);
+
+  // SET PROFILE (FINAL FORMAT)
+  setProfile({
+    login: data.username,
+    avatar_url: data.avatar,
+    public_repos: data.repos,
+    followers: data.followers,
+    stars: data.stars,
+    forks: data.forks,
+    age: data.accountAge,
+    contributions: data.contributions,
+    loan: data.loan,
+    risk: data.risk,
+    score: data.score
+  });
+
+} catch (err) {
+  console.log(err);
+}
+
+setLoading(false);
+};
+
+const getRisk = () => {
+if (score > 70) return "Low Risk";
+if (score > 50) return "Medium Risk";
+return "High Risk";
+};
+
+ if (page === "home") {
     return (
       <div className="min-h-screen bg-black text-white overflow-hidden relative">
 
@@ -80,6 +134,7 @@ function App() {
       </div>
     );
   }
+
   // ================= ANALYZE =================
 if (page === "analyze") {
 return (
@@ -100,8 +155,11 @@ return (
     <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl flex gap-4 shadow-xl">
 
       <input
+        
         className="p-3 rounded-lg text-black w-64"
         placeholder="Enter GitHub Username"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
 
       <button
