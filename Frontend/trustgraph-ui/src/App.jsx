@@ -397,7 +397,94 @@ return (
 );
 }
 
-  return <div>Coming soon...</div>;
+// ================= LEARN =================
+if (page === "learn") {
+return (
+<div className="min-h-screen bg-gradient-to-br from-gray-100 to-white px-10 py-10">
+
+  {/* BACK */}
+  <button
+    onClick={() => setPage("home")}
+    className="mb-6 text-blue-600 font-medium"
+  >
+    ← Back
+  </button>
+
+  {/* TITLE */}
+  <h1 className="text-5xl font-bold mb-6">
+    About TrustGraph
+  </h1>
+
+  <p className="text-gray-600 text-lg max-w-3xl mb-10">
+    TrustGraph is an AI-powered credit scoring platform that transforms 
+    developer activity into a verifiable financial identity. By analyzing 
+    GitHub data, we enable smarter, faster, and fairer lending decisions 
+    for the digital workforce.
+  </p>
+
+  {/* FEATURES */}
+  <div className="grid md:grid-cols-3 gap-6 mb-12">
+
+    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
+      <h2 className="text-xl font-bold mb-2">🔍 Data Analysis</h2>
+      <p className="text-gray-600">
+        Extracts insights from repositories, contributions, and engagement.
+      </p>
+    </div>
+
+    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
+      <h2 className="text-xl font-bold mb-2">🤖 AI Scoring</h2>
+      <p className="text-gray-600">
+        Converts developer activity into a trust-based credit score.
+      </p>
+    </div>
+
+    <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition">
+      <h2 className="text-xl font-bold mb-2">💰 Financial Access</h2>
+      <p className="text-gray-600">
+        Enables under-collateralized loans for developers worldwide.
+      </p>
+    </div>
+
+  </div>
+
+  {/* HOW IT WORKS */}
+  <div className="mb-12">
+
+    <h2 className="text-3xl font-bold mb-4">
+      How It Works
+    </h2>
+
+    <ul className="space-y-3 text-gray-700 text-lg">
+      <li>➡️ Enter your GitHub username</li>
+      <li>➡️ We analyze your activity & contributions</li>
+      <li>➡️ AI calculates your Trust Score</li>
+      <li>➡️ Get loan eligibility & credit insights</li>
+    </ul>
+
+  </div>
+
+  {/* WHY TRUSTGRAPH */}
+  <div>
+
+    <h2 className="text-3xl font-bold mb-4">
+      Why TrustGraph?
+    </h2>
+
+    <p className="text-gray-600 text-lg max-w-3xl">
+      Traditional credit systems ignore digital work. TrustGraph bridges 
+      that gap by recognizing real-world developer contributions as 
+      financial credibility — unlocking new opportunities for millions 
+      of developers globally.
+    </p>
+
+  </div>
+
+</div>
+);
 }
+
+}
+
 
 export default App;
