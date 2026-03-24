@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import heroImg from "./assets/hero.png";
 import { connectWallet, saveScore } from "./web3";
@@ -12,12 +11,13 @@ const [profile, setProfile] = useState(null);
 const [loading, setLoading] = useState(false);
 
 const analyzeProfile = async () => {
+  console.log("Clicked",username)
 if (!username) return;
 
 try {
   setLoading(true);
 
-  const res = await fetch('http://localhost:5000/analyze/${username}');
+  const res = await fetch(`http://localhost:5000/analyze/${username}`);
 
   if (!res.ok) {
     alert("User not found");
