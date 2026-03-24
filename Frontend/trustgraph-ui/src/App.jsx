@@ -17,7 +17,7 @@ if (!username) return;
 try {
   setLoading(true);
 
-  const res = await fetch(`http://localhost:5000/analyze/${username}`);
+  const res = await fetch(`https://trustgraph-backend.onrender.com/analyze/${username}`);
 
   if (!res.ok) {
     alert("User not found");
